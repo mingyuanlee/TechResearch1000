@@ -1,13 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime/debug"
+)
 
 func main() {
-	b := []int{1, 2, 3, 4, 5}
-	a := b[:] // Create a new slice a that references the same array as b
+	// Defer a function that recovers from a panic.
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println(string(debug.Stack()))
+		}
+	}()
 
-	a[0] = 100
+	// Simulate a panic by dividing by zero.
+	a := 10
+	b := 0
+	result := a / b // This will panic.
 
-	fmt.Println("b:", b)
-	fmt.Println("a:", a)
+	// This line will not be reached due to the panic.
+	fmt.Println("Result:", result)
 }
