@@ -14,5 +14,22 @@ Slippage: the difference between the expected price of a trade and the actual ex
 HFT system depends on high volume to work efficiently. Market-making. What's market-making? 
 
 
+Goal: match participants that are willing to sell an asset with participants that are willing to buy it
+
+Two types of orders: market orders and limit orders. 
+
+Market orders: willing to either buy or sell the asset immediately, preferably at the best available price
+Limit orders: show the interest
+
+Limit orders make liquidity
+
+
+
+
+
+we use red-black tree because we put emphasis on insertions and deletions instead of searching (we are using the hash table to do O(1) search)
+
+
+
 Thoughts:
 Can we make it a distributed orderbook using Kademlia?

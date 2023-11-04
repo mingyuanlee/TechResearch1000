@@ -1,14 +1,26 @@
-use std::sync::mpsc;
-use std::thread;
+impl AveragedCollection {
+  pub fn add(&mut self, value: i32) {
+    self.list.push(value);
+    self.update_average();
+  }
 
-fn main() {
-  let (tx, rx) = mpsc::channel();
+  pub fn remove(&mut self) -> Option<i32> {
+    let result = self.list.pop();
+    match result {
+      Some(value) => {
+        self.update_average();
+        Some(value)
+      }
+      None => None,
+    }
+  }
 
-  thread::spawn(move || {
-    let val = String::from("hi");
-    tx.send(val).unwrap();
-  });
+  pub fn average(&self) -> f64 {
+    self.average
+  }
 
-  let received = rx.recv().unwrap();
-  println!("Got: {}", received);
+  fn update_average(&mut self) {
+    let total: i32 = self.list.iter().sum();
+    self.average = total as f64 / self.list.len() as f64;
+  }
 }
