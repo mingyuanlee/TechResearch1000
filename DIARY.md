@@ -18,3 +18,12 @@
 3. Rust Closure
 4. Rust Application: bitcoin-sv
 
+2023-10-31
+
+1. Rust traits
+2. Rust Application: bitcoin-sv
+3. Rust Application: HFT Orderbook
+
+2023-11-14
+
+1. Stream Processing
